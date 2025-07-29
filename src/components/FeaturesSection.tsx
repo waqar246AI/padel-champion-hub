@@ -9,6 +9,7 @@ import {
   Zap,
   Clock
 } from "lucide-react";
+import { ScrollAnimatedCard, StackingCards } from "@/components/animations/ScrollAnimations";
 
 const features = [
   {
@@ -80,20 +81,25 @@ const FeaturesSection = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+        <ScrollAnimatedCard className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20" delay={0.2}>
           {stats.map((stat, index) => (
-            <div key={index} className="text-center glass-card p-6 hover:scale-105 transition-all duration-300">
+            <ScrollAnimatedCard 
+              key={index} 
+              className="text-center glass-card p-6 hover:scale-105 transition-all duration-300"
+              delay={0.3 + (index * 0.1)}
+              layerEffect={true}
+            >
               <div className="flex justify-center mb-3 text-primary">
                 {stat.icon}
               </div>
               <div className="text-3xl font-bold text-foreground mb-2">{stat.number}</div>
               <div className="text-muted-foreground text-sm">{stat.label}</div>
-            </div>
+            </ScrollAnimatedCard>
           ))}
-        </div>
+        </ScrollAnimatedCard>
 
         {/* Features Grid */}
-        <div className="text-center mb-16">
+        <ScrollAnimatedCard className="text-center mb-16" delay={0.4}>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             World-Class Padel Experience
           </h2>
@@ -101,12 +107,14 @@ const FeaturesSection = () => {
             Discover the ultimate padel destination with premium facilities, cutting-edge technology, 
             and an unmatched atmosphere for players of all skill levels.
           </p>
-        </div>
+        </ScrollAnimatedCard>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
-            <div
+            <ScrollAnimatedCard
               key={index}
+              delay={0.6 + (index * 0.1)}
+              layerEffect={true}
               className="glass-card p-8 hover:scale-105 transition-all duration-300 group cursor-pointer"
             >
               <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${feature.color} mb-6 group-hover:scale-110 transition-transform`}>
@@ -120,12 +128,16 @@ const FeaturesSection = () => {
               <p className="text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </ScrollAnimatedCard>
           ))}
         </div>
 
         {/* CTA Section */}
-        <div className="text-center glass-card p-12 bg-gradient-to-r from-primary/10 to-primary-glow/10 border-primary/20">
+        <ScrollAnimatedCard 
+          className="text-center glass-card p-12 bg-gradient-to-r from-primary/10 to-primary-glow/10 border-primary/20"
+          delay={1.0}
+          layerEffect={true}
+        >
           <h3 className="text-3xl font-bold text-foreground mb-4">
             Ready to Experience Padelverse?
           </h3>
@@ -140,7 +152,7 @@ const FeaturesSection = () => {
               Take a Virtual Tour
             </Button>
           </div>
-        </div>
+        </ScrollAnimatedCard>
       </div>
     </section>
   );
